@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 
 const User = {
     email: 'kimkt@ewhain.net',
@@ -13,6 +16,8 @@ export default function Login() {
     const [pwValid, setPwValid] = useState(false);
     const [notAllow, setNotAllow] = useState(false);
  
+    const navigate = useNavigate();
+
     const handleEmail = (e) => {
         setEmail(e.target.value);
         const regex = 
@@ -40,6 +45,7 @@ export default function Login() {
     const onClickConfirmButton = () => {
         if(email === User.email && pw === User.pw) {
             alert('로그인에 성공했습니다.');
+            navigate('/loginmain');
         }
         else if (email === User.email && pw != User.pw) {
             alert('비밀번호가 맞지 않습니다.');
@@ -102,7 +108,7 @@ export default function Login() {
             </div>
 
             <div>
-                <button onClick={onClickConfirmButton} disabled={notAllow} className="bottomButton">
+                <button onClick={onClickConfirmButton} disabled={notAllow} className="bottomButton" >
                     확인
                 </button>
             </div>
