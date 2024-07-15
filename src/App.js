@@ -1,10 +1,12 @@
 
 import React from 'react';
 import {
-  BrowserRouter,
+  BrowserRouter as
+  Router,
   Routes,
   Route
 } from "react-router-dom";
+import { AuthProvider } from './component/contexts/AuthContext';
 import styled from 'styled-components';
 
 //Pages
@@ -24,7 +26,8 @@ const MainTitleText = styled.p`
 
 function App(props) {
   return (
-    <BrowserRouter>
+    <AuthProvider>
+      <Router>
         <Routes>
           <Route index element={<MainPage />} />
           <Route path="login" element={<Login />} />
@@ -33,7 +36,8 @@ function App(props) {
           <Route path="entirescholar" element={<EntireScholar />} />
           <Route path="recomscholar" element={<RecomScholar />} />
         </Routes>
-        </BrowserRouter>
+      </Router>
+    </AuthProvider>
   );
 }
 
