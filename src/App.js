@@ -25,7 +25,6 @@ const MainTitleText = styled.p`
 function App(props) {
   return (
     <BrowserRouter>
-        <MainTitleText>SCHOLLI</MainTitleText>
         <Routes>
           <Route index element={<MainPage />} />
           <Route path="login" element={<Login />} />

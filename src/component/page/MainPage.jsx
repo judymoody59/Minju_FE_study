@@ -26,7 +26,7 @@ const Space = styled.div`
 `;
 const Rectangle = styled.div`
     width: 100%;
-    max-width: 90%; /* 가로 길이를 창 크기에 맞게 조절 */
+    max-width: 80%; /* 가로 길이를 창 크기에 맞게 조절 */
     height: 350px; /* 세로 길이를 늘림 */
     background-color: white;
     padding: 40px; /* 버튼 주위에 원하는 공간을 만들기 위해 패딩 조정 */
