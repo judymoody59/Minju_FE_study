@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from '../contexts/AuthContext';
 import styled from 'styled-components';
 import logo from '../ui/SCHOLLI_logo.jpeg';
+import appleLogo from '../ui/AppleId_Logo.jpeg';
 
 const User = {
     email: 'kimkt@ewhain.net',
@@ -125,6 +126,7 @@ const AutoLoginWrap = styled.div`
     justify-content: flex-start; /* 왼쪽 정렬 */
     font-size: 12px;
     color: #262626;
+    margin-left: 5px;
 
     input[type="checkbox"] {
         appearance: none;
@@ -137,12 +139,28 @@ const AutoLoginWrap = styled.div`
         outline: none;
         cursor: pointer;
         margin-right: 8px; /* 체크박스와 텍스트 간의 간격 조정 */
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
     }
 
     input[type="checkbox"]:checked {
         background-color: #348a8c;
         border: none;
     }
+
+    input[type="checkbox"]:checked::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 8px; /* 체크된 원의 크기 */
+        height: 8px;
+        background-color: white;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+
 
     label {
         display: flex;
@@ -153,6 +171,7 @@ const AutoLoginWrap = styled.div`
 const FindInfoWrap = styled.div`
     display: flex;
     justify-content: flex-end; /* 오른쪽 정렬 */
+    margin-right: 10px;
 
     .separator {
         margin: 0 8px;
@@ -183,6 +202,7 @@ const SocialLoginWrap = styled.div`
         cursor: pointer;
     }
 `;
+
 
 const Space = styled.div`
     margin-top: 32px;
@@ -301,7 +321,7 @@ export default function Login() {
                 <SocialLoginWrap>
                 <p>sign up with</p>
                 <Space />
-                <img src="apple-logo.png" alt="Apple" />
+                <img src={appleLogo} alt="Apple" />
                 <img src="google-logo.png" alt="Google" />
                 <img src="kakao-logo.png" alt="Kakao" />
                 </SocialLoginWrap>
