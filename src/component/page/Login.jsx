@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useAuth } from '../contexts/AuthContext';
 
 
 const User = {
@@ -17,6 +17,7 @@ export default function Login() {
     const [notAllow, setNotAllow] = useState(false);
  
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     const handleEmail = (e) => {
         setEmail(e.target.value);
@@ -45,6 +46,7 @@ export default function Login() {
     const onClickConfirmButton = () => {
         if(email === User.email && pw === User.pw) {
             alert('로그인에 성공했습니다.');
+            login();
             navigate('/loginmain');
         }
         else if (email === User.email && pw != User.pw) {
