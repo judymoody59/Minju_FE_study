@@ -27,7 +27,7 @@ const Space = styled.div`
 `;
 const Rectangle = styled.div`
     width: 100%;
-    max-width: 80%; /* 가로 길이를 창 크기에 맞게 조절 */
+    max-width: 600px; /* 수정: 고정된 최대 가로 길이 설정 */
     height: 350px; /* 세로 길이를 늘림 */
     background-color: white;
     padding: 40px; /* 버튼 주위에 원하는 공간을 만들기 위해 패딩 조정 */
@@ -96,6 +96,15 @@ function MainPage(props) {
                 <Space />
                 <Space />
                 <Space />
+                <Space />
+                <Space />
+                <Space />
+                <Space />
+                <Space />
+                <Space />
+                <Space />
+                <Space />
+                <Space />
                 {isAuthenticated ? (
                     <>
                         <Rectangle style={{ marginTop: "16px" }}>
@@ -113,6 +122,11 @@ function MainPage(props) {
                             </FirstButton>
                             <Space />
                         </Rectangle>
+                        <Space />
+                        <Space />
+                        <Space />
+                        <Space />
+                        <Space />
                         <Space />
                         <Space />
                         <Rectangle>
@@ -150,6 +164,11 @@ function MainPage(props) {
                         </Rectangle>
                         <Space />
                         <Space />
+                        <Space />
+                        <Space />
+                        <Space />
+                        <Space />
+                        <Space />
                         <Rectangle>
                             <Text>나에게 맞는
                                 <br /> 맞춤 장학금을
@@ -180,6 +199,16 @@ function MainPage(props) {
                 >
                     장학 수혜 정보 입력하고{"\n"}포인트 받기
                 </BottomButton>
+                <Space />
+                <Space />
+                <Space />
+                <Space />
+                <Space />
+                <Space />
+                <Space />
+                <Space />
+                <Space />
+                <Space />
             </Wrapper>
         </>
     );
