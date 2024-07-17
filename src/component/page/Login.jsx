@@ -47,7 +47,7 @@ export default function Login() {
         if(email === User.email && pw === User.pw) {
             alert('로그인에 성공했습니다.');
             login();
-            navigate('/loginmain');
+            navigate('/main');
         }
         else if (email === User.email && pw != User.pw) {
             alert('비밀번호가 맞지 않습니다.');

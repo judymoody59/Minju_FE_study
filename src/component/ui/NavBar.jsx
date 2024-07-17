@@ -19,8 +19,6 @@ const NavBarWrapper = styled.div`
     margin: 0 auto; /* 중앙 정렬 */
 
     @media (max-width: 768px) {
-        flex-direction: column;
-        align-items: flex-start;
         padding: 16px;
     }
 `;
@@ -33,11 +31,7 @@ const Logo = styled.div`
     img {
         height: 40px; /* 네비게이션 항목과 같은 높이로 조정 */
         width: auto;
-        margin-bottom: -40px; /* 로고를 네비게이션 가운데로 맞추기 위해 아래로 이동 */
-    }
-
-    @media (max-width: 768px) {
-        margin-bottom: 16px;
+        margin: 0; /* 마진을 제거하여 중앙 정렬 문제 해결 */
     }
 `;
 
@@ -60,10 +54,15 @@ const NavLinks = styled.div`
 
 function NavBar() {
     const { isAuthenticated } = useAuth();  // 추가
+    const navigate = useNavigate();
+
+    const handleLogoClick = () => {
+        navigate('/main');
+    };
 
     return (
         <NavBarWrapper>
-            <Logo>
+            <Logo onClick={handleLogoClick}>
                 <img src={logo} alt="Logo" />
             </Logo>
             <NavLinks>

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import NavBar from "../ui/NavBar";
 import Button from "../ui/Button";
+import { useAuth } from '../contexts/AuthContext';
 
 const Wrapper = styled.div`
     padding: 16px;
@@ -82,10 +83,11 @@ const BottomButton = styled.button`
 
 function MainPage(props) {
     const navigate = useNavigate();
+    const { isAuthenticated } = useAuth(); // 로그인 상태 확인
 
     return (
         <>
-        <NavBar />
+            <NavBar />
             <Wrapper>
                 <Space />
                 <Space />
@@ -94,54 +96,87 @@ function MainPage(props) {
                 <Space />
                 <Space />
                 <Space />
-                <Rectangle style={{ marginTop: "16px" }}> {/* 첫 번째 Rectangle 위치를 위로 이동 */}
-                    <Text>다양한 기관과 단체의
-                        <br/>장학금을 확인해보세요</Text> {/* 첫 번째 Rectangle의 문구 */}
+                {isAuthenticated ? (
+                    <>
+                        <Rectangle style={{ marginTop: "16px" }}>
+                            <Text>다양한 기관과 단체의
+                                <br/>장학금을 확인해보세요</Text>
+                            <Space />
+                            <Space />
+                            <Space />
+                            <Space />
+                            <Space />
+                            <FirstButton
+                                onClick={() => navigate('/entirescholar')}
+                            >
+                                전체 장학금 목록 보기
+                            </FirstButton>
+                            <Space />
+                        </Rectangle>
                         <Space />
                         <Space />
+                        <Rectangle>
+                            <Text>나에게 맞는
+                                <br /> 맞춤 장학금을
+                                <br /> 확인해보세요. </Text>
+                            <Space />
+                            <Space />
+                            <Space />
+                            <Space />
+                            <SecondButton
+                                onClick={() => navigate('/recomscholar')}
+                            >
+                                추천 장학금 목록 보기
+                            </SecondButton>
+                            <Space />
+                        </Rectangle>
+                    </>
+                ) : (
+                    <>
+                        <Rectangle style={{ marginTop: "16px" }}>
+                            <Text>다양한 기관과 단체의
+                                <br/>장학금을 확인해보세요</Text>
+                            <Space />
+                            <Space />
+                            <Space />
+                            <Space />
+                            <Space />
+                            <FirstButton
+                                onClick={() => navigate('/login')}
+                            >
+                                전체 장학금 목록 보기
+                            </FirstButton>
+                            <Space />
+                        </Rectangle>
                         <Space />
                         <Space />
-                        <Space />
-                        <FirstButton
-                        onClick={() => {
-                            navigate('/login');
-                        }}
-                    >
-                        전체 장학금 목록 보기
-                    </FirstButton>
-                    <Space />
-                </Rectangle>
+                        <Rectangle>
+                            <Text>나에게 맞는
+                                <br /> 맞춤 장학금을
+                                <br /> 확인해보세요. </Text>
+                            <Space />
+                            <Space />
+                            <Space />
+                            <Space />
+                            <SecondButton
+                                onClick={() => navigate('/login')}
+                            >
+                                추천 장학금 목록 보기
+                            </SecondButton>
+                            <Space />
+                        </Rectangle>
+                    </>
+                )}
                 <Space />
                 <Space />
-                <Rectangle>
-                    <Text>나에게 맞는
-                        <br /> 맞춤 장학금을
-                        <br /> 확인해보세요. </Text> {/* 두 번째 Rectangle의 문구 */}
-                        <Space />
-                        <Space />
-                        <Space />
-                        <Space />
-                        <SecondButton
-                        onClick={() => {
-                            navigate('/login');
-                        }}
-                    >
-                        추천 장학금 목록 보기
-                    </SecondButton>
-                    <Space />
-                </Rectangle>
-                    <Space />
-                    <Space />
-                    <Space />
-                    <Space />
-                    <Space />
-                    <Space />
-                    <Space />
-                    <Space />
-                    <BottomButton
-                    onClick={() => {
-                        navigate('/somepage'); // 원하는 경로로 변경
-                    }}
+                <Space />
+                <Space />
+                <Space />
+                <Space />
+                <Space />
+                <Space />
+                <BottomButton
+                    onClick={() => navigate('/somepage')}
                 >
                     장학 수혜 정보 입력하고{"\n"}포인트 받기
                 </BottomButton>
@@ -149,5 +184,6 @@ function MainPage(props) {
         </>
     );
 }
+
 
 export default MainPage;
