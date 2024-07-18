@@ -269,7 +269,7 @@ export default function Login() {
         <Page>
             <TitleWrap>
                 <img src={logo} alt="SCHOLLI Logo" />
-                <h1>로그인</h1>
+                
             </TitleWrap>
             <ContentWrap>
                 <InputTitle>이메일 주소</InputTitle>
