@@ -8,7 +8,7 @@ import logo from '../ui/SCHOLLI_logo.jpeg';
 
 const NavBarWrapper = styled.div`
     width: 100%;
-    max-width: 1000px;
+    max-width: 100%;
     background-color: #fff;
     display: flex;
     justify-content: space-between;
@@ -39,7 +39,7 @@ const NavLinks = styled.div`
     display: flex;
     gap: 24px;
     margin-left: auto; /* 네비게이션 링크를 오른쪽으로 밀어줌 */
-    padding-right: 16px; /* 오른쪽 여백 추가 */
+    padding-right: 50px; /* 오른쪽 여백 추가 */
 
     a {
         text-decoration: none;
