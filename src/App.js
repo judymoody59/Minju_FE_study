@@ -12,7 +12,6 @@ import styled from 'styled-components';
 //Pages
 import Login from './component/page/Login';
 import MainPage from './component/page/MainPage';
-import LoginMainPage from './component/page/LoginMainPage';
 import EntireScholar from './component/page/EntireScholar';
 import RecomScholar from './component/page/RecomScholar';
 
@@ -25,6 +24,7 @@ const MainTitleText = styled.p`
 
 
 function App(props) {
+
   return (
     <AuthProvider>
       <Router>
@@ -32,7 +32,6 @@ function App(props) {
           <Route index element={<MainPage />} />
           <Route path="login" element={<Login />} />
           <Route path="main" element={<MainPage />} />
-          <Route path="loginmain" element={<LoginMainPage />} />
           <Route path="entirescholar" element={<EntireScholar />} />
           <Route path="recomscholar" element={<RecomScholar />} />
         </Routes>
