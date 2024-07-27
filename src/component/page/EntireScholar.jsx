@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import NavBar from "../ui/NavBar";
 import scholarships from "../data";
+import emptyheart from "../ui/emptyheart.jpeg";
+import filledheart from "../ui/filledheart.jpeg";
+
 
 const styles = {
     container: {
@@ -29,7 +32,25 @@ const styles = {
         borderRadius: "4px",
         cursor: "pointer"
     },
-
+    dropdown: {
+        position: "absolute",
+        top: "100%",
+        right: "0",
+        backgroundColor: "white",
+        boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
+        zIndex: 1,
+        borderRadius: "4px",
+        overflowY: "auto", // 세로 스크롤바 추가
+        maxHeight: "200px" // 최대 높이 설정
+    },
+    dropdownItem: {
+        padding: "10px 20px",
+        cursor: "pointer",
+        whiteSpace: "nowrap"
+    },
+    dropdownItemHover: {
+        backgroundColor: "#f1f1f1"
+    },
     table: {
         width: "100%",
         borderCollapse: "collapse"
@@ -40,7 +61,7 @@ const styles = {
         borderLeft: "0",
         borderRight: "0",
         textAlign: "left",
-        padding: "12px"
+        padding: "12px",
 
     },
     th: {
@@ -77,16 +98,9 @@ const styles = {
         marginLeft: "60px"
 
     },
-    circle: {
+    heartImage: {
         width: "20px",
-        height: "20px",
-        borderRadius: "50%",
-        border: "2px solid #348a8c", // 테두리 색상
-        display: "inline-block"
-        
-    },
-    filledCircle: {
-        backgroundColor: "#348a8c" // 채워진 동그라미 색상
+        height: "20px"
     },
     pagination: {
         marginTop: "20px",
@@ -108,11 +122,18 @@ function EntireScholar(props) {
     // 상태 관리
     const [likes, setLikes] = useState(Array(scholarships.length).fill(false));
 
+    const [dropdownVisible, setDropdownVisible] = useState(false);
+
+    const toggleDropdown = () => {
+        setDropdownVisible(!dropdownVisible);
+    };
+
     // 좋아요 버튼 클릭 핸들러
     const handleLikeClick = (index) => {
         const newLikes = [...likes];
         newLikes[index] = !newLikes[index];
         setLikes(newLikes);
+
     };
     return (
         <>
@@ -120,7 +141,14 @@ function EntireScholar(props) {
             <div style={styles.container}>
                 <div style={styles.searchBar}>
                     <input type="text" placeholder="검색" style={styles.searchInput} />
-                    <button style={styles.sortButton}>기한 순 ▼</button>
+                    <button style={styles.sortButton}
+                    onClick={toggleDropdown}>기한 순 ▼</button>
+                    {dropdownVisible && (
+                        <div style={styles.dropdown}>
+                            <div style={styles.dropdownItem}>가나다순</div>
+                            <div style={styles.dropdownItem}>좋아요순</div>
+                        </div>
+                    )}
                 </div>
                 <table style={styles.table}>
                     <thead>
@@ -128,16 +156,15 @@ function EntireScholar(props) {
                             <th style={{ ...styles.firstThTd, ...styles.th }}>장학 재단명</th>
                             <th style={{ ...styles.firstThTd, ...styles.th }}>장학 사업명</th>
                             <th style={{ ...styles.firstThTd, ...styles.th }}>기한</th>
-                            <th style={{ ...styles.firstThTd, ...styles.th }}>이전 수혜자 정보</th>
+                            <th style={{ ...styles.firstThTd, ...styles.th}}>이전 수혜자 정보</th>
                         </tr>
                     </thead>
                     <tbody>
                     {scholarships.map((scholarship, index) => (
                             <tr key={index}>
                                 <td style={styles.thTd}>{scholarship.scholarname}</td>
-                                <td style={styles.thTd}>{scholarship.businessname}</td>
-                                <td style={styles.thTd}>{scholarship.period}</td>
-                                <td style={styles.thTd}><button style={styles.infoButton}>정보 보러가기</button>
+                                <td style={{ ... styles.thTd, paddingRight: "20px"}}>{scholarship.businessname}</td>
+                                <td style={{ ...styles.thTd, paddingRight: "90px" }}>{scholarship.period}</td>
                                 <td style={styles.thTd}>
                                 <div style={styles.flexContainer}>
                                     <button style={styles.infoButton}>정보 보러가기</button>
@@ -145,15 +172,13 @@ function EntireScholar(props) {
                                         style={styles.heartButton}
                                         onClick={() => handleLikeClick(index)}
                                     >
-                                        <span
-                                            style={{
-                                                ...styles.circle,
-                                                ...(likes[index] && styles.filledCircle)
-                                            }}
-                                        />
+                                        <img
+                                                src={likes[index] ? filledheart : emptyheart}
+                                                alt="heart"
+                                                style={styles.heartImage}
+                                            />
                                     </button>
                                 </div>
-                                </td>
                                 </td>
                             </tr>
                         ))}
