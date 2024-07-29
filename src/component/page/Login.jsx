@@ -19,7 +19,8 @@ const Page = styled.div`
     padding: 0 20px;
     left: 50%;
     transform: translate(-50%, 0);
-    background-color: #f7f7f7;
+    background-color: #fffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     display: flex;
     flex-direction: column;
