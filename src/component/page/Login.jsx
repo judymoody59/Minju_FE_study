@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from '../contexts/AuthContext';
 import styled from 'styled-components';
 import logo from '../ui/SCHOLLI_logo.jpeg';
-import appleLogo from '../ui/AppleId_Logo.jpeg';
+import appleLogo from '../ui/Apple.jpeg';
+import googleLogo from '../ui/Google.jpeg';
+import kakaoLogo from '../ui/Kakao.jpeg';
 
 const User = {
     email: 'kimkt@ewhain.net',
@@ -197,8 +199,8 @@ const SocialLoginWrap = styled.div`
     }
 
     img {
-        width: 36px;
-        height: 36px;
+        width: 50px;
+        height: 50px;
         margin: 0 8px;
         cursor: pointer;
     }
@@ -323,8 +325,8 @@ export default function Login() {
                 <p>sign up with</p>
                 <Space />
                 <img src={appleLogo} alt="Apple" />
-                <img src="google-logo.png" alt="Google" />
-                <img src="kakao-logo.png" alt="Kakao" />
+                <img src={googleLogo} alt="Google" />
+                <img src={kakaoLogo} alt="Kakao" />
                 </SocialLoginWrap>
             </ContentWrap>
 
