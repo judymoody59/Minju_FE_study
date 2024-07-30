@@ -129,12 +129,14 @@ function EntireScholar(props) {
     const [dropdownVisible, setDropdownVisible] = useState(false);
 
     const [sortOption, setSortOption] = useState('기한 순');
+    const [otherOptions, setOtherOptions] = useState(['가나다 순', '좋아요 순']);
 
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
     };
 
     const handleSortOptionClick = (option) => {
+        setOtherOptions([sortOption, ...otherOptions.filter(opt => opt !== option)]);
         setSortOption(option);
         setDropdownVisible(false);
     };
@@ -156,9 +158,16 @@ function EntireScholar(props) {
                     onClick={toggleDropdown}>{sortOption} ▼</button>
                     {dropdownVisible && (
                         <div style={styles.dropdown}>
-                            <div style={styles.dropdownItem} onClick={() => handleSortOptionClick('가나다 순')}>가나다 순</div>
-                            <div style={styles.dropdownItem} onClick={() => handleSortOptionClick('좋아요 순')}>좋아요 순</div>
-                        </div>
+                            {otherOptions.map((option, index) => (
+                                <div
+                                    key={index}
+                                    style={styles.dropdownItem}
+                                    onClick={() => handleSortOptionClick(option)}
+                                >
+                                    {option}
+                            </div>
+                        ))}
+                    </div>
                     )}
                 </div>
                 <table style={styles.table}>
