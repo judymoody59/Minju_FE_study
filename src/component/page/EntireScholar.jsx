@@ -13,7 +13,9 @@ const styles = {
     searchBar: {
         display: "flex",
         justifyContent: "space-between",
-        marginBottom: "20px"
+        marginBottom: "20px",
+        position: "relative", // 상대 위치를 기준으로 설정
+        zIndex: 1 // 드롭다운 메뉴와 겹치지 않도록 설정
     },
     searchInput: {
         flex: 1,
@@ -30,15 +32,17 @@ const styles = {
         color: "white",
         border: "none",
         borderRadius: "4px",
-        cursor: "pointer"
+        cursor: "pointer",
+        position: "relative",  // 상대 위치를 기준으로 설정
+        zIndex: 2
     },
     dropdown: {
         position: "absolute",
-        top: "100%",
+        top: "calc(100% + 4px)", // 버튼 바로 아래에 위치하도록 설정
         right: "0",
         backgroundColor: "white",
         boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
-        zIndex: 1,
+        zIndex: 3,
         borderRadius: "4px",
         overflowY: "auto", // 세로 스크롤바 추가
         maxHeight: "200px" // 최대 높이 설정
@@ -124,8 +128,15 @@ function EntireScholar(props) {
 
     const [dropdownVisible, setDropdownVisible] = useState(false);
 
+    const [sortOption, setSortOption] = useState('기한 순');
+
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
+    };
+
+    const handleSortOptionClick = (option) => {
+        setSortOption(option);
+        setDropdownVisible(false);
     };
 
     // 좋아요 버튼 클릭 핸들러
@@ -142,11 +153,11 @@ function EntireScholar(props) {
                 <div style={styles.searchBar}>
                     <input type="text" placeholder="검색" style={styles.searchInput} />
                     <button style={styles.sortButton}
-                    onClick={toggleDropdown}>기한 순 ▼</button>
+                    onClick={toggleDropdown}>{sortOption} ▼</button>
                     {dropdownVisible && (
                         <div style={styles.dropdown}>
-                            <div style={styles.dropdownItem}>가나다순</div>
-                            <div style={styles.dropdownItem}>좋아요순</div>
+                            <div style={styles.dropdownItem} onClick={() => handleSortOptionClick('가나다 순')}>가나다 순</div>
+                            <div style={styles.dropdownItem} onClick={() => handleSortOptionClick('좋아요 순')}>좋아요 순</div>
                         </div>
                     )}
                 </div>
