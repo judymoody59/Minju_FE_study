@@ -14,8 +14,7 @@ const NavBarWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 16px 32px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 2px solid #348a8c;
     margin: 0 auto; /* 중앙 정렬 */
 
     @media (max-width: 768px) {
