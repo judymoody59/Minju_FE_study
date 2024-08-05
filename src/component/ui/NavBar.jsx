@@ -56,7 +56,11 @@ function NavBar() {
     const navigate = useNavigate();
 
     const handleLogoClick = () => {
-        navigate('/main');
+        if (isAuthenticated) {
+            navigate('/main');
+        } else {
+            navigate('/login');
+        }
     };
 
     return (
