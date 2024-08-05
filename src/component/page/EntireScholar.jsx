@@ -122,7 +122,7 @@ const styles = {
     },
     link: { 
         textDecoration: "none",
-        color: "#348a8c",
+        color: "#000",
         cursor: "pointer"
     }
 };

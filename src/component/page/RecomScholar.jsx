@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import NavBar from "../ui/NavBar";
 import scholarships from "../data";
+import styled from 'styled-components';
 import emptyheart from "../ui/emptyheart.jpeg";
 import filledheart from "../ui/filledheart.jpeg";
-
+import LightBulb from '../ui/LightBulb.jpeg';
 
 const styles = {
     container: {
@@ -123,6 +124,32 @@ const styles = {
     }
 };
 
+const WarningBox = styled.div`
+    background-color: #e0e0e0 ;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px; /* 상단 마진 추가 */
+`;
+
+const Title = styled.h2`
+    font-size: 1.2em;
+    margin-bottom: 10px;
+`;
+
+const TitleWithIcon = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+`;
+
+const Icon2 = styled.img`
+    margin-right: 8px; /* 아이콘과 텍스트 사이 간격 */
+    width: 15px; 
+    height: 20px; 
+`;
+
+
+
 
 function RecomScholar(props) {
 // 상태 관리
@@ -150,6 +177,7 @@ const handleLikeClick = (index) => {
     setLikes(newLikes);
 
 };
+
 return (
     <>
         <NavBar/>
@@ -211,12 +239,20 @@ return (
                     </tr>
                 </tfoot>
             </table>
+            <WarningBox>
+                <TitleWithIcon>
+                    <Icon2 src={LightBulb} alt="LightBulb Icon" />
+                    <Title> 신청할 때는 각 장학금의 세부적인 기준과 마감일을 다시 한번 확인하시기 바랍니다.</Title>
+                </TitleWithIcon>
+                <p>사용자가 확인하지 않아 발생하는 문제에 대해서는 Scholli 측에서 책임을 지지 않으며, 모든 책임은 전적으로 사용자에게 있습니다.</p>
+            </WarningBox>
             <div style={styles.pagination}>
                 <span style={styles.paginationSpan}>1 2 3 4 5</span>
             </div>
         </div>
     </>
 );
+
 
 }
 export default RecomScholar;

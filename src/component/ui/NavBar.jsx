@@ -52,7 +52,7 @@ const NavLinks = styled.div`
 `;
 
 function NavBar() {
-    const { isAuthenticated } = useAuth();  // 추가
+    const { isAuthenticated } = useAuth();  // 로그인 상태 확인
     const navigate = useNavigate();
 
     const handleLogoClick = () => {

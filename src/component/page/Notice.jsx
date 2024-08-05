@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import NavBar from '../ui/NavBar';
+import Loudspeaker from '../ui/Loudspeaker.jpeg';
+import LightBulb from '../ui/LightBulb.jpeg';
 
 const Container = styled.div`
     margin: 20px;
@@ -19,13 +21,41 @@ const Title = styled.h2`
     margin-bottom: 10px;
 `;
 
+const TitleWithIcon = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+`;
+
+const Icon = styled.img`
+    margin-right: 8px; /* 아이콘과 텍스트 사이 간격 */
+    width: 20px; 
+    height: 20px; 
+`;
+
+const Icon2 = styled.img`
+    margin-right: 8px; /* 아이콘과 텍스트 사이 간격 */
+    width: 15px; 
+    height: 20px; 
+`;
+
 const List = styled.ul`
     list-style-type: none;
     padding: 0;
 `;
 const HighlightBox = styled.div`
     margin-left: 100px;
+    margin-right: 100px;
     background-color: rgba(52, 138, 140, 0.19);
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px; /* 상단 마진 추가 */
+`;
+
+const WarningBox = styled.div`
+    margin-left: 100px;
+    margin-right: 100px;
+    background-color: #e0e0e0 ;
     padding: 20px;
     border-radius: 5px;
     margin-top: 20px; /* 상단 마진 추가 */
@@ -93,12 +123,19 @@ const Notice = () => {
             </Section>
 
             <HighlightBox>
-                <Title> 이와 같은 사유가 장학금을 받았어요!</Title>
-                <p>
-                    대학재단은 가정환경이 열악하거나 소득 분위가 낮은 학생에게 많이 지원합니다. 지원서 제출
-                    시 이를 반영하여 적격 학생이 장학금 혜택을 받을 수 있도록 합니다.
-                </p>
+                <TitleWithIcon>
+                    <Icon src={Loudspeaker} alt="Loudspeaker Icon" />
+                    <Title> 이런 사람이 장학금을 받았어요!</Title>
+                </TitleWithIcon>
+                <p>대체적으로 가정형편이 좋지 않거나 소득 분위가 낮은 학생들이 많이 수혜했어요. 지원서 제출은 물론 면접도 있기 때문에 지원서 내용을 잘 익히고 면접에서 떨지 않고 잘 말한 사람들이 많이 합격했어요. </p>
             </HighlightBox>
+            <WarningBox>
+                <TitleWithIcon>
+                    <Icon2 src={LightBulb} alt="LightBulb Icon" />
+                    <Title> 신청할 때는 각 장학금의 세부적인 기준과 마감일을 다시 한번 확인하시기 바랍니다.</Title>
+                </TitleWithIcon>
+                <p>사용자가 확인하지 않아 발생하는 문제에 대해서는 Scholli 측에서 책임을 지지 않으며, 모든 책임은 전적으로 사용자에게 있습니다.</p>
+            </WarningBox>
         </Container>
         </>
     );
