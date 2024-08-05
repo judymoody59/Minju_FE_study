@@ -3,16 +3,63 @@ import styled from 'styled-components';
 import NavBar from '../ui/NavBar';
 import Loudspeaker from '../ui/Loudspeaker.jpeg';
 import LightBulb from '../ui/LightBulb.jpeg';
+import emptyheart from "../ui/emptyheart.jpeg";
+import filledheart from "../ui/filledheart.jpeg";
 
 const Container = styled.div`
     margin: 20px;
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    margin-top: 60px;
+    margin-top: 30px;
+`;
+
+const FullWidthSection = styled.div`
+    width: calc(100% + 40px); /* 컨테이너 마진을 무시하고 전체 너비로 설정 */
+    margin-left: -20px; /* 컨테이너 마진을 무시하고 전체 너비로 설정 */
+`;
+
+const ScholarshipTitleWrapper = styled.div`
+    display: flex;
+    align-items: baseline;
+    margin-left: 50px;
+`;
+
+const ScholarshipTitle = styled.h1`
+    font-size: 2em;
+    margin: 10px 0;
+`;
+
+const ScholarshipSubtitle = styled.p`
+    font-size: 1em;
+    color: gray;
+    margin-left: 30px;
+`;
+
+
+const Header = styled(FullWidthSection)`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+`;
+
+const HeartButton = styled.img`
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+`;
+
+const AnnouncementBar = styled(FullWidthSection)`
+    background-color: #348a8c;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1.2em;
+    font-weight: bold;
 `;
 
 const Section = styled.div`
-    margin-left: 100px;
+    margin-left: 60px;
     margin-bottom: 20px;
 `;
 
@@ -42,10 +89,15 @@ const Icon2 = styled.img`
 const List = styled.ul`
     list-style-type: none;
     padding: 0;
+    margin-top: 0px;
+`;
+
+const ListItem = styled.li`
+    margin-bottom: 5px;
 `;
 const HighlightBox = styled.div`
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 60px;
+    margin-right: 60px;
     background-color: rgba(52, 138, 140, 0.19);
     padding: 20px;
     border-radius: 5px;
@@ -53,23 +105,27 @@ const HighlightBox = styled.div`
 `;
 
 const WarningBox = styled.div`
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 60px;
+    margin-right: 60px;
     background-color: #e0e0e0 ;
     padding: 20px;
     border-radius: 5px;
     margin-top: 20px; /* 상단 마진 추가 */
 `;
 
-const ListItem = styled.li`
-    margin-bottom: 5px;
-`;
 
 const Notice = () => {
     return (
         <>
         <NavBar />
         <Container>
+            <Header>
+                <ScholarshipTitleWrapper>
+                    <ScholarshipTitle>2024 상반기 광주시 빛고을 장학</ScholarshipTitle>
+                    <ScholarshipSubtitle>빛고을 장학 재단</ScholarshipSubtitle>
+                </ScholarshipTitleWrapper>
+            </Header>
+            <AnnouncementBar>공고</AnnouncementBar>
             <Section>
                 <Title>신청 기간</Title>
                 <p>2024.04.29 ~ 2024.05.28</p>
@@ -78,30 +134,31 @@ const Notice = () => {
             <Section>
                 <Title>선발인원</Title>
                 <List>
-                    <ListItem>총 330명</ListItem>
-                    <ListItem>고졸자 93명</ListItem>
-                    <ListItem>학부생 189명</ListItem>
-                    <ListItem>대학원생 48명</ListItem>
+                    <ListItem>· 총 330명</ListItem>
+                    <ListItem>· 중학색 93명</ListItem>
+                    <ListItem>· 중학생 196명</ListItem>
+                    <ListItem>· 대학생 41명</ListItem>
                 </List>
             </Section>
 
             <Section>
                 <Title>장학혜택</Title>
                 <List>
-                    <ListItem>학업장려비 최대 150만원</ListItem>
-                    <ListItem>교재비 50만원</ListItem>
-                    <ListItem>생활비 50만원</ListItem>
-                    <ListItem>대학원 100만원</ListItem>
-                    <ListItem>해외연수 기회 제공</ListItem>
-                    <ListItem>발표회 진행한 기수와차 신설 계획</ListItem>
+                    <ListItem>[장학급 지급] 최대 150만원</ListItem>
+                    <ListItem>· 중학생 35만원</ListItem>
+                    <ListItem>· 고등학생 50만원</ListItem>
+                    <ListItem>· 대학생 150만원</ListItem>
+                    <ListItem>※ 중복 수혜: 일부 가능</ListItem>
+                    <ListItem>※ 빛고을 장학금 기수혜자 선발 제외</ListItem>
                 </List>
             </Section>
 
             <Section>
                 <Title>접수 방법</Title>
                 <List>
-                    <ListItem>접수 장소: 공공 및 해당 학교장기관 (교육청, 자치구, 각 추천기관 등)</ListItem>
-                    <ListItem>접수 시기: 3월 ~ 4월 초</ListItem>
+                    <ListItem>[방문 접수]</ListItem>
+                    <ListItem>· 접수처: 장학생 종류별 추천기관 (교육청, 자치구, 각 추천 기관 등)</ListItem>
+                    <ListItem>· 제출 서류: 공고문 확인</ListItem>
                 </List>
             </Section>
 
@@ -113,12 +170,14 @@ const Notice = () => {
             <Section>
                 <Title>신청 자격</Title>
                 <List>
-                    <ListItem>[가정 및 사회환경]</ListItem>
-                    <ListItem>저소득 가정 자녀, 다문화가정 자녀, 한부모 가정 자녀</ListItem>
-                    <ListItem>[학업 성적]</ListItem>
-                    <ListItem>최근 학기 성적이 상위 30% 이상인 자</ListItem>
-                    <ListItem>[기타]</ListItem>
-                    <ListItem>사회봉사활동에 적극 참여한 자</ListItem>
+                    <ListItem>[지역 기준] 주민 등록지, 학교 소재지</ListItem>
+                    <ListItem>· 광주시 1년 이상 거주</ListItem>
+                    <ListItem>· 광주시 소재 학교 재학</ListItem>
+                    <ListItem>[추천 사항] 학교장, 기타</ListItem>
+                    <ListItem>※ 유형별 추천 사항 상이 (공고문 확인 필요)</ListItem>
+                    <ListItem>[유형별 신청 자격]</ListItem>
+                    <ListItem>· 학업 장려/ 생게 곤란 / 지정 장학 유형</ListItem>
+                    <ListItem> ※ 유형별 선발 조건 공고문 확인</ListItem>
                 </List>
             </Section>
 
