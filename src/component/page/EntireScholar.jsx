@@ -20,10 +20,10 @@ const styles = {
     },
     searchInput: {
         flex: 1,
-        padding: "10px",
+        padding: "10px 40px 10px 20px", // 왼쪽과 오른쪽 여백 추가
         fontSize: "16px",
-        border: "1px solid #ddd",
-        borderRadius: "4px"
+        border: "3px solid #2f4f5f", // 검색창 테두리 색상
+        borderRadius: "25px" // 검색창 모서리 둥글게
     },
     sortButton: {
         marginLeft: "10px",
