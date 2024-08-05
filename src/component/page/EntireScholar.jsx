@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import NavBar from "../ui/NavBar";
 import scholarships from "../data";
 import emptyheart from "../ui/emptyheart.jpeg";
@@ -118,6 +119,11 @@ const styles = {
     },
     paginationSpanHover: {
         textDecoration: "underline"
+    },
+    link: { 
+        textDecoration: "none",
+        color: "#348a8c",
+        cursor: "pointer"
     }
 };
 
@@ -183,7 +189,7 @@ function EntireScholar(props) {
                     {scholarships.map((scholarship, index) => (
                             <tr key={index}>
                                 <td style={styles.thTd}>{scholarship.scholarname}</td>
-                                <td style={{ ... styles.thTd, paddingRight: "20px"}}>{scholarship.businessname}</td>
+                                <td style={{ ... styles.thTd, paddingRight: "20px"}}><Link to="/notice" style={styles.link}>{scholarship.businessname}</Link></td>
                                 <td style={{ ...styles.thTd, paddingRight: "90px" }}>{scholarship.period}</td>
                                 <td style={styles.thTd}>
                                 <div style={styles.flexContainer}>
