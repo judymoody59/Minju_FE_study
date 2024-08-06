@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import NavBar from '../ui/NavBar';
 import Loudspeaker from '../ui/Loudspeaker.jpeg';
@@ -22,6 +22,8 @@ const ScholarshipTitleWrapper = styled.div`
     display: flex;
     align-items: baseline;
     margin-left: 50px;
+    justify-content: space-between;
+    width: 100%;
 `;
 
 const ScholarshipTitle = styled.h1`
@@ -47,6 +49,7 @@ const HeartButton = styled.img`
     width: 24px;
     height: 24px;
     cursor: pointer;
+    margin-left: auto;
 `;
 
 const AnnouncementBar = styled(FullWidthSection)`
@@ -115,6 +118,12 @@ const WarningBox = styled.div`
 
 
 const Notice = () => {
+    const [isHeartFilled, setIsHeartFilled] = useState(false);
+
+    const toggleHeart = () => {
+        setIsHeartFilled(!isHeartFilled);
+    };
+
     return (
         <>
         <NavBar />
@@ -123,6 +132,11 @@ const Notice = () => {
                 <ScholarshipTitleWrapper>
                     <ScholarshipTitle>2024 상반기 광주시 빛고을 장학</ScholarshipTitle>
                     <ScholarshipSubtitle>빛고을 장학 재단</ScholarshipSubtitle>
+                    <HeartButton
+                        src={isHeartFilled ? filledheart : emptyheart}
+                        alt="Heart Icon"
+                        onClick={toggleHeart}
+                    />
                 </ScholarshipTitleWrapper>
             </Header>
             <AnnouncementBar>공고</AnnouncementBar>

@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
 import logo from '../ui/SCHOLLI_logo.jpeg';
 
 
@@ -52,15 +51,10 @@ const NavLinks = styled.div`
 `;
 
 function NavBar() {
-    const { isAuthenticated } = useAuth();  // 로그인 상태 확인
     const navigate = useNavigate();
 
     const handleLogoClick = () => {
-        if (isAuthenticated) {
-            navigate('/main');
-        } else {
-            navigate('/login');
-        }
+        navigate('/main');
     };
 
     return (
@@ -69,9 +63,9 @@ function NavBar() {
                 <img src={logo} alt="Logo" />
             </Logo>
             <NavLinks>
-                <Link to={isAuthenticated ? "/entirescholar" : "/login"}>전체 장학금 목록</Link>
-                <Link to={isAuthenticated ? "/mypage" : "/login"}>마이페이지</Link>
-                <Link to={isAuthenticated ? "/points" : "/login"}>포인트</Link>
+                <Link to={"/recomscholar"}>추천 장학금 목록</Link>
+                <Link to={"/mypage"}>마이페이지</Link>
+                <Link to={"/points"}>포인트</Link>
             </NavLinks>
         </NavBarWrapper>
     );
