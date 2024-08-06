@@ -22,6 +22,7 @@ const ScholarshipTitleWrapper = styled.div`
     display: flex;
     align-items: baseline;
     margin-left: 50px;
+    margin-right: 50px;
     justify-content: space-between;
     width: 100%;
 `;
@@ -50,6 +51,8 @@ const HeartButton = styled.img`
     height: 24px;
     cursor: pointer;
     margin-left: auto;
+    align-self: center;
+    margin-top: 8px;
 `;
 
 const AnnouncementBar = styled(FullWidthSection)`
@@ -62,12 +65,18 @@ const AnnouncementBar = styled(FullWidthSection)`
 `;
 
 const Section = styled.div`
-    margin-left: 60px;
-    margin-bottom: 20px;
+    margin-top: 50px;
+    margin-left: 200px;
+    margin-bottom: 50px;
 `;
 
 const Title = styled.h2`
-    font-size: 1.2em;
+    font-size: 2.0em;
+    margin-bottom: 10px;
+`;
+
+const Title2 = styled.h2`
+    font-size: 1.5em;
     margin-bottom: 10px;
 `;
 
@@ -97,10 +106,11 @@ const List = styled.ul`
 
 const ListItem = styled.li`
     margin-bottom: 5px;
+    font-size: 1.2em;
 `;
 const HighlightBox = styled.div`
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 200px;
+    margin-right: 200px;
     background-color: rgba(52, 138, 140, 0.19);
     padding: 20px;
     border-radius: 5px;
@@ -108,8 +118,8 @@ const HighlightBox = styled.div`
 `;
 
 const WarningBox = styled.div`
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 200px;
+    margin-right: 200px;
     background-color: #e0e0e0 ;
     padding: 20px;
     border-radius: 5px;
@@ -142,7 +152,7 @@ const Notice = () => {
             <AnnouncementBar>공고</AnnouncementBar>
             <Section>
                 <Title>신청 기간</Title>
-                <p>2024.04.29 ~ 2024.05.28</p>
+                <ListItem>2024.04.29 ~ 2024.05.28</ListItem>
             </Section>
 
             <Section>
@@ -198,14 +208,14 @@ const Notice = () => {
             <HighlightBox>
                 <TitleWithIcon>
                     <Icon src={Loudspeaker} alt="Loudspeaker Icon" />
-                    <Title> 이런 사람이 장학금을 받았어요!</Title>
+                    <Title2> 이런 사람이 장학금을 받았어요!</Title2>
                 </TitleWithIcon>
                 <p>대체적으로 가정형편이 좋지 않거나 소득 분위가 낮은 학생들이 많이 수혜했어요. 지원서 제출은 물론 면접도 있기 때문에 지원서 내용을 잘 익히고 면접에서 떨지 않고 잘 말한 사람들이 많이 합격했어요. </p>
             </HighlightBox>
             <WarningBox>
                 <TitleWithIcon>
                     <Icon2 src={LightBulb} alt="LightBulb Icon" />
-                    <Title> 신청할 때는 각 장학금의 세부적인 기준과 마감일을 다시 한번 확인하시기 바랍니다.</Title>
+                    <Title2> 신청할 때는 각 장학금의 세부적인 기준과 마감일을 다시 한번 확인하시기 바랍니다.</Title2>
                 </TitleWithIcon>
                 <p>사용자가 확인하지 않아 발생하는 문제에 대해서는 Scholli 측에서 책임을 지지 않으며, 모든 책임은 전적으로 사용자에게 있습니다.</p>
             </WarningBox>
