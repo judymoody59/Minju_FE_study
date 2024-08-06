@@ -104,6 +104,7 @@ const Title = styled.h2`
 `;
 
 const InfoList = styled.ul`
+    margin-top: 35px;
     list-style-type: none;
     padding: 0;
 `;
