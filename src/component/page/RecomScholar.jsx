@@ -20,45 +20,8 @@ const styles = {
     highlight: {
         color: "#348a8c" 
     },
-    sortButtonContainer: {
-        display: "flex",
-        justifyContent: "flex-end", // 오른쪽으로 정렬
-        marginBottom: "20px",
-        position: "relative",
-        zIndex: 1
-    },
-    sortButton: {
-        marginLeft: "10px",
-        padding: "10px 20px",
-        fontSize: "16px",
-        backgroundColor: "#348a8c",
-        color: "white",
-        border: "none",
-        borderRadius: "4px",
-        cursor: "pointer",
-        position: "relative",  // 상대 위치를 기준으로 설정
-        zIndex: 2
-    },
-    dropdown: {
-        position: "absolute",
-        top: "calc(100% + 4px)", // 버튼 바로 아래에 위치하도록 설정
-        right: "0",
-        backgroundColor: "white",
-        boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
-        zIndex: 3,
-        borderRadius: "4px",
-        overflowY: "auto", // 세로 스크롤바 추가
-        maxHeight: "200px" // 최대 높이 설정
-    },
-    dropdownItem: {
-        padding: "10px 20px",
-        cursor: "pointer",
-        whiteSpace: "nowrap"
-    },
-    dropdownItemHover: {
-        backgroundColor: "#f1f1f1"
-    },
     table: {
+        marginTop: "50px",
         width: "100%",
         borderCollapse: "collapse"
     },
@@ -124,6 +87,45 @@ const styles = {
     }
 };
 
+const SortButton = styled.button`
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #348a8c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative; // For dropdown positioning
+    z-index: 2;
+`;
+
+const DropdownContainer = styled.div`
+    position: absolute;
+    top: 160px; // 네비게이션으로부터 아래 위치
+    right: 100px; // 오른쪽 여백
+    z-index: 1000; // ensure it appears above other elements
+`;
+
+const Dropdown = styled.div`
+    position: absolute;
+    top: calc(100% + 4px); // 버튼 바로 아래에 위치하도록 설정
+    left: 50%;
+    transform: translateX(-50%); // 중앙 정렬
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 3;
+    border-radius: 4px;
+    overflow-y: auto;
+    max-height: 200px;
+    width: max-content;
+`;
+
+const DropdownItem = styled.div`
+    padding: 10px 20px;
+    cursor: pointer;
+    white-space: nowrap;
+`;
+
 const WarningBox = styled.div`
     background-color: #e0e0e0 ;
     padding: 20px;
@@ -183,22 +185,23 @@ return (
         <NavBar/>
         <div style={styles.container}>
         <h1 style={styles.header}><span style={styles.highlight}>김키티 </span>님의 추천장학금</h1>
-            <div style={styles.sortButtonContainer}>
-                <button style={styles.sortButton}
-                onClick={toggleDropdown}>{sortOption} ▼</button>
+        <DropdownContainer>
+                <SortButton onClick={toggleDropdown}>
+                    {sortOption} ▼
+                </SortButton>
                 {dropdownVisible && (
-                    <div style={styles.dropdown}>
+                    <Dropdown>
                         {otherOptions.map((option, index) => (
-                            <div
+                            <DropdownItem
                                 key={index}
-                                style={styles.dropdownItem}
                                 onClick={() => handleSortOptionClick(option)}
                             >
                                 {option}
-                        </div>
-                    ))}
-                </div>
+                            </DropdownItem>
+                        ))}
+                    </Dropdown>
                 )}
+            </DropdownContainer>
             </div>
             <table style={styles.table}>
                 <thead>
@@ -249,7 +252,6 @@ return (
             <div style={styles.pagination}>
                 <span style={styles.paginationSpan}>1 2 3 4 5</span>
             </div>
-        </div>
     </>
 );
 
