@@ -206,6 +206,16 @@ const SocialLoginWrap = styled.div`
     }
 `;
 
+const RegisterLink = styled.a`
+    display: block;
+    margin-top: 30px;
+    font-size: 15px;
+    color: #2f6877;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+`;
+
 
 const Space = styled.div`
     margin-top: 32px;
@@ -268,6 +278,10 @@ export default function Login() {
         setNotAllow(true);
     }, [emailValid, pwValid]);
 
+    const handleSignUpClick = () => {
+        navigate('/register');  // 회원가입 페이지로 이동
+    }
+
     return (
         <Page>
             <TitleWrap>
@@ -328,6 +342,7 @@ export default function Login() {
                 <img src={googleLogo} alt="Google" />
                 <img src={kakaoLogo} alt="Kakao" />
                 </SocialLoginWrap>
+                <RegisterLink onClick={handleSignUpClick}>회원가입</RegisterLink>
             </ContentWrap>
 
         </Page>
