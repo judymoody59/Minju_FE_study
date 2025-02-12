@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
 import logo from '../ui/SCHOLLI_logo.jpeg';
 
 
@@ -14,8 +13,7 @@ const NavBarWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 16px 32px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 2px solid #348a8c;
     margin: 0 auto; /* 중앙 정렬 */
 
     @media (max-width: 768px) {
@@ -53,7 +51,6 @@ const NavLinks = styled.div`
 `;
 
 function NavBar() {
-    const { isAuthenticated } = useAuth();  // 추가
     const navigate = useNavigate();
 
     const handleLogoClick = () => {
@@ -66,9 +63,11 @@ function NavBar() {
                 <img src={logo} alt="Logo" />
             </Logo>
             <NavLinks>
-                <Link to={isAuthenticated ? "/entirescholar" : "/login"}>전체 장학금 목록</Link>
-                <Link to={isAuthenticated ? "/mypage" : "/login"}>마이페이지</Link>
-                <Link to={isAuthenticated ? "/points" : "/login"}>포인트</Link>
+            <Link to={"/entirescholar"}>전체 장학금 목록</Link>
+                <Link to={"/recomscholar"}>추천 장학금 목록</Link>
+                <Link to={"/interestlist"}>내 관심 목록</Link>
+                <Link to={"/mypage"}>마이페이지</Link>
+                <Link to={"/points"}>포인트</Link>
             </NavLinks>
         </NavBarWrapper>
     );
